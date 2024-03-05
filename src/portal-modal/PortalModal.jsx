@@ -1,6 +1,6 @@
 import {useState} from 'react';
-import {createPortal} from "react-dom";
 import ModalContent from "../modal/ModalContent.jsx";
+import Portal from "../Portal.jsx";
 
 
 function PortalModal() {
@@ -13,8 +13,10 @@ function PortalModal() {
             </button>
 
             {
-                showModal && createPortal(
-                    <ModalContent onClose={() => setShowModal(false)}/>, document.getElementById('portal-root')
+                showModal && (
+                    <Portal>
+                        <ModalContent onClose={() => setShowModal(false)}/>
+                    </Portal>
                 )
             }
 
